@@ -1,0 +1,36 @@
+/* page 1 */
+input, .en__contactMessage {
+    /* border: 1px solid #999 !important;
+    border-radius: 5px; */
+}
+.target-form-container {
+    width: 100%;
+}
+.target-form-container > #target_form_replace {
+    width: 100%;
+}
+
+.sidebar_content {
+    overflow-y: visible !important;
+}
+.target-edit-btn {
+    width: 100%;
+    padding: 20px 0;
+    text-align: right; 
+}
+.modal {
+    z-index: 10002 !important;
+}
+
+/* page 2 */
+.ty__right {
+    padding: 15px !important;
+}
+@media (min-width: 768px) {
+    .sidebar {
+        overflow-x: hidden;
+    }
+    .live .sidebar .sidebar_thermom {
+        height: 125%;
+    }
+}
