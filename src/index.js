@@ -140,20 +140,3 @@ const enFormType = function() {
 
 createBirthYearList();
 enFormType();
-
-//
-
-// $(document).ready(function(){
-// 	$('.mobile-slick').slick({
-// 		dots: true,
-// 		centerMode: true,
-// 		autoplay: true,
-// 		speed: 600,
-// 		adaptiveHeight: true,
-// 		autoplaySpeed: 3000,
-// 		arrows: false,
-// 		infinite: true,
-// 		fade: true,
-// 		cssEase: 'linear'
-// 	});
-// });

@@ -1,186 +1,116 @@
-<style type="text/css">
-    .ty__container {
-        -moz-align-items: stretch;
-        -webkit-align-items: stretch;
-        -ms-align-items: stretch;
-        align-items: stretch;
-        display: -moz-flex;
-        display: -webkit-flex;
-        display: -ms-flex;
-        display: flex;
-        -moz-flex-direction: row;
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-        flex-direction: row;
-        -moz-justify-content: -moz-flex-end;
-        -webkit-justify-content: -webkit-flex-end;
-        -ms-justify-content: -ms-flex-end;
-        justify-content: flex-end;
-        position: relative;
-        text-align: left;
-        overflow-x: hidden;
-        min-height: 100vh;
-    }
-
-    .ty__left {
-        background-color: #0c071b;
-        background: url(https://storage.googleapis.com/fa-assets/gp-planet/slide4.jpg);
-        background-position-x: 60%;
-        background-position-y: center;
-        background-size: auto;
-        background-size: cover;
-        -webkit-flex-grow: 1;
-        flex-grow: 1;
-        -webkit-flex-shrink: 1;
-        flex-shrink: 1;
-        -webkit-align-self: center;
-        align-self: center;
-        min-height: 100vh;
-        margin: 0;
-        padding: 0;
-    }
-
-    .ty__right {
-        background: #FBB514;
-        background-image: linear-gradient(124deg, #FBB514, #FFDB77);
-        padding: 0;
-        height: auto;
-        width: 400px;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-align-items: center;
-        align-items: center;
-        -webkit-align-content: center;
-        justify-content: center;
-        -webkit-flex-direction: column;
-        flex-direction: column;
-    }
-
-    .btn {
-        display: inline-block;
-        padding: 14px 15px;
-        width: 100%;
-        font-size: 1.1rem;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        -ms-touch-action: manipulation;
-        touch-action: manipulation;
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        background-image: none;
-        border-radius: 4px;
-        text-decoration: none;
-        text-shadow: 0 1px 1px rgba(0, 0, 0, .25);
-        letter-spacing: .2rem;
-        -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
-    }
-
-    .fb_btn {
-        background: #4267B2;
-        color: #fff;
-        margin: 0;
-        border: none;
-        text-decoration: none;
-    }
-
-    .fb_btn:hover {
-        background-color: #5b7bd5;
-        background-image: linear-gradient(#5b7bd5, #4864b1)
-    }
-
-    .line_btn {
-        background: #00c300;
-        color: #fff;
-        margin: 0;
-        border: none;
-        text-decoration: none;
-    }
-
-    .line_btn:hover {
-        background-color: #10dd00;
-        background-image: linear-gradient(#10dd00, #00c300)
-    }
-
-    .donate_btn {
-        background: #fff;
-        color: #ffaa00 !important;
-        border: none;
-        text-decoration: none;
-        text-shadow: none;
-    }
-
-    .donate_btn:hover {
-        background-color: #ffaa00;
-        background-image: linear-gradient(#ffcc00, #ffaa00);
-        color: #fff !important;
-    }
-
-    @media screen and (max-width:800px) {
-        .ty__container {
-            -moz-flex-direction: column-reverse;
-            -webkit-flex-direction: column-reverse;
-            -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
-            /*text-align: center !important;*/
-            width: 100%;
-            max-width: 100%;
+<html>
+<head>
+    <title></title>
+    <script async="" src="chrome-extension://aggiiclaiamajehmlfpkjmlbadmkledi/popup.js" type="text/javascript"></script><script async="" src="chrome-extension://aggiiclaiamajehmlfpkjmlbadmkledi/tat_popup.js"
+        type="text/javascript"></script>
+    <style type="text/css">@media screen and (min-width: 768px) {
+            .rwd-container {
+                display: flex;
+            }
         }
 
-        .ty__right {
-            position: relative;
-            -webkit-flex-direction: column;
-            flex-direction: column;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            padding: 1rem 2rem 1rem 2rem;
-            width: 100%;
-            max-width: 100%;
+        @media screen and (max-width: 767px) {
+            .rwd-container {
+                display: block;
+            }
         }
+    </style>
+    <script async="" src="chrome-extension://aggiiclaiamajehmlfpkjmlbadmkledi/popup.js" type="text/javascript"></script><script async="" src="chrome-extension://aggiiclaiamajehmlfpkjmlbadmkledi/tat_popup.js"
+        type="text/javascript"></script><script async="" src="chrome-extension://aggiiclaiamajehmlfpkjmlbadmkledi/popup.js" type="text/javascript"></script><script async="" src="chrome-extension://aggiiclaiamajehmlfpkjmlbadmkledi/tat_popup.js"
+        type="text/javascript"></script><script async="" src="chrome-extension://aggiiclaiamajehmlfpkjmlbadmkledi/popup.js" type="text/javascript"></script><script async="" src="chrome-extension://aggiiclaiamajehmlfpkjmlbadmkledi/tat_popup.js"
+        type="text/javascript"></script><script async="" src="chrome-extension://aggiiclaiamajehmlfpkjmlbadmkledi/popup.js" type="text/javascript"></script><script async="" src="chrome-extension://aggiiclaiamajehmlfpkjmlbadmkledi/tat_popup.js"
+        type="text/javascript"></script>
+</head>
+<body data-gramm="false" style="background-color: #f8f3f7; margin: 0;">
+<div align="center">
+<div style="max-width: 600px; text-align: left; background-color: #66cc00;"><a href="http://www.greenpeace.org/taiwan/" target="_blank" title="瀏覽綠色和平首頁"><img alt="Greenpeace 綠色和平" border="0" src="http://ddc.greenpeace.org.tw/email/2019/gp-logo-2019.png" style="width: 300px; border: 0;" /> </a></div>
 
-        .ty__left {
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            max-width: 100%;
-        }
-    }
-</style>
-<div class="ty__container">
-    <div class="ty__left">&nbsp;</div>
+<div style="max-width: 600px; text-align: left; background-color: #ffffff; color: #333; font-size: 14px; line-height: 1.5em; font-family: 黑體, 'Microsoft JhengHei', 'Heiti TC', Helvetica, sans-serif; padding: 0;">
+<div><a href="https://act.gp/39KU4nl" target="_blank"><img alt="" src="https://change.greenpeace.org.tw/2020/petition/zh-tw.2020.oceans.dwf.emailtotarget/img/007.jpg" width="100%" /></a></div>
 
-    <div class="ty__right">
-        <div style="padding:15px;"><img alt="Greenpeace - Protect the Oceans" class="emailImage" data-ratio-lock="true"
-                data-unit="%" src="https://storage.googleapis.com/fa-assets/gp-planet/gp-planet-logo.png"
-                style="height: auto; width: 252px;" /></div>
+<div style="padding: 15px;">
+<p>親愛的{user_data~full_name}：</p>
 
-        <h2>謝謝您於關鍵時刻為海洋發聲！</h2>
+<p>謝謝您成為守護海洋永續和漁工人權的一份子！美麗的海洋不只面臨到海水暖化、過度捕撈的問題，還有海上奴役的人權問題。</p>
 
-        <div style="margin: 1rem 2rem; font-size: 14px; font-weight:bold;">為達成守護海洋的願景，綠色和平正進行以下工作：
-            <ul style="padding-left:20px;">
-                <li><b style="color: #0036AD;">代表您參與聯合國會議，極力促成「全球海洋公約」</b></li>
-                <li><b style="color: #0036AD;">推動 2030 年前保護最少 30% 海洋</b>，積極促請各國政府堅定立場並採取行動</li>
-                <li><b style="color: #0036AD;">調查海洋現況，以研究結果，</b>，促使各國代表理解保護海洋的急迫性</li>
-            </ul>
-            邀請您一同參與，支持守護海洋的研究工作</div>
+<p>海上人權剝削往往伴隨著非法漁捕行為，保護漁工，導正遠洋漁業的陋習，亦是保護海洋。唯有集結力量，才能推動更多進步的政府法規與企業政策，保護海洋生態平衡。</p>
 
-        <div style="display: none">謝謝您參與連署！</div>
-        <!--page1 use this string to identify wether its succ or not-->
+<p>面對全球漁業資源枯竭危機，綠色和平在過去多年，與世界最大水產企業「泰聯集團」長期交涉，發起多次連署， <a href="https://www.greenpeace.org/taiwan/update/1472/%E5%A5%BD%E6%B6%88%E6%81%AF%EF%BC%81%E6%9C%80%E5%A4%A7%E9%AE%AA%E9%AD%9A%E7%BD%90%E9%A0%AD%E4%BC%81%E6%A5%AD%E8%B8%8F%E4%B8%8A%E6%94%B9%E8%AE%8A%E4%B9%8B%E8%B7%AF/?utm_campaign=2020-dwf&amp;utm_source=petition_thankyou_email&amp;utm_medium=email&amp;utm_content=2020-dwf_tkemail_blog_好消息！最大鮪魚罐頭企業踏上改變之路" target="_blank">對方終於承諾於2020年前，改變非法漁業行為 </a>，並確保供應鏈中的勞工，能受到良好的保障與平等對待。</p>
 
-        <div align="center">
-            <p><a class="btn donate_btn"
-                    href="https://act.greenpeace.org/page/4723/donate/1?campaign=climate&amp;ref=2019-sanctuaries_thankyou_page"
-                    target="_blank">支持我們</a></p>
+<div style="width: 100%; text-align: center;"><a href="https://www.greenpeace.org/taiwan/update/3024/%E9%BB%83%E7%89%8C%E4%B9%8B%E5%BE%8C%EF%BC%8C%E8%87%BA%E7%81%A3%E9%81%A0%E6%B4%8B%E6%BC%81%E6%A5%AD%E4%BB%8D%E6%98%AF%E6%9C%AA%E7%AB%9F%E4%B9%8B%E6%A5%AD/?utm_campaign=2020-dwf&amp;utm_source=petition_thankyou_email&amp;utm_medium=email&amp;utm_content=2020-dwf_tkemail_blog_黃牌之後，臺灣遠洋漁業仍是未竟之業" style="width: 100% ; display: inline-block; background: #ffa726; color: #ffffff; padding: 14px 15px; font-family: 黑體, 'Microsoft JhengHei', 'Heiti TC', Helvetica, sans-serif; font-size: 15px; font-weight: bold; text-align: center; letter-spacing: 1px; text-decoration: none; border-radius: 5px; width:80%;" target="_blank">臺灣前進海洋永續的下一步</a></div>
 
-            <p><a class="btn fb_btn" href="https://www.facebook.com/sharer/sharer.php?u=https://act.gp/2zdhzF2"
-                    target="_blank">Facebook 分享</a></p>
+<p>臺灣身為全球漁業主要的一員，而「豐群水產」則是傲居全球的全球前三大鮪魚貿易商，都足以說明我們是能推動改變關鍵的一環。</p>
 
-            <p><a class="btn line_btn" href="https://social-plugins.line.me/lineit/share?url=https://act.gp/2ZYFbcP"
-                    target="_blank">LINE 分享</a></p>
-        </div>
-    </div>
+<p>綠色和平正在集合群眾力量，要求「豐群水產」持續改進，邁向永續漁業、正視漁工人權議題。</p>
+
+<p>您的加入將能推動現況的改變，並有助於要求政府及遠洋漁業企業，盡速制訂永續漁業和保障漁工人權的政策與具體計畫，真正杜絕非法漁獲以及血汗海鮮！</p>
+
+<p>如果您願意，請將連署的訊息分享出去，邀請朋友也加入。因為，更多人挺身呼籲，守護海洋的工作就更有機會成功。</p>
+
+<div class="rwd-container">
+<div style="text-align:center; margin-bottom:20px; padding: 10px; width: 100%"><a href="https://www.facebook.com/sharer/sharer.php?u=https://act.gp/2xBqmTU" style="display: inline-block; background: #435A94; color: #ffffff; padding: 14px 15px; font-family: 黑體, 'Microsoft JhengHei', 'Heiti TC', Helvetica, sans-serif; font-size: 15px; font-weight: bold; text-align: center; letter-spacing: 1px; text-decoration: none; border-radius: 5px; width:80%;" target="_blank">Facebook 分享</a></div>
+
+<div style="text-align:center; margin-bottom:20px; padding: 10px; width: 100%"><a href="https://social-plugins.line.me/lineit/share?url=https://act.gp/3akpRux" style="display: inline-block; background: #66cc00; color: #ffffff; padding: 14px 15px; font-family: 黑體, 'Microsoft JhengHei', 'Heiti TC', Helvetica, sans-serif; font-size: 15px; font-weight: bold; text-align: center; letter-spacing: 1px; text-decoration: none; border-radius: 5px; width:80%;" target="_blank">Line 分享</a></div>
 </div>
+
+<p>然而，海洋危機一直存在，長久以來，仰賴許多像您一樣的支持者慷慨幫助，綠色和平得以在臺灣持續推動保護海洋工作，需要您長期穩定的支持與關注，持續推動政府制定法規、要求企業盡到環境保護責任，一起帶來更多改變！</p>
+
+<p>懇請您捐助守護，讓每一個生命都受到珍視，讓血汗的故事不再延續，並在接下來一起共同監督政府與企業，為落實漁業改革工作上，繼續努力！</p>
+
+<div style="width: 100%; text-align: center;"><a href="https://act.greenpeace.org/page/4723/donate/1?utm_campaign=2020-dwf&amp;utm_source=petition_thankyou_email&amp;utm_medium=email&amp;utm_content=2020-dwf_tkemail_donation" style="width: 100% ; display: inline-block; background: #ffa726; color: #ffffff; padding: 14px 15px; font-family: 黑體, 'Microsoft JhengHei', 'Heiti TC', Helvetica, sans-serif; font-size: 15px; font-weight: bold; text-align: center; letter-spacing: 1px; text-decoration: none; border-radius: 5px; width:80%;" target="_blank">支持我們</a></div>
+
+<p>再次謝謝您的加入，我們會繼續努力，在臺灣和全球與您共創環境里程碑，在來得及的時候，守住您我共有唯一的藍色星球！</p>
+
+<p style="text-align: right;">綠色和平海洋專案小組</p>
+
+<p>P.S. 為維持公正獨立，綠色和平不接受政府與企業資助，100% 倚賴公眾支持，以積極行動帶來改變。改革能源、守護您我家園，請<a href="https://act.greenpeace.org/page/4723/donate/1?utm_campaign=2020-dwf&amp;utm_source=petition_thankyou_email&amp;utm_medium=email&amp;utm_content=2020-dwf_tkemail_donation" target="_blank">捐助支持</a>，成為我們堅強的後盾！</p>
+</div>
+</div>
+
+<div style="max-width: 600px; text-align: left; background-color: #ffffff; color: #333; font-size: 12px; line-height: 1.5em; font-family: 黑體, 'Microsoft JhengHei', 'Heiti TC', Helvetica, sans-serif; padding: 0;">
+<div><!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="20" width="600">
+            <![endif]--><!--[if !IE]-->
+<table style="width: 100%; font-size: 12px; padding: 15px 20px;"><!--[endif]-->
+    <tbody>
+        <tr>
+            <td style="width: 25%; text-align: center;"><a href="https://act.greenpeace.org/page/4723/donate/1?utm_campaign=2020-dwf&amp;utm_source=petition_thankyou_email&amp;utm_medium=email&amp;utm_content=2020-dwf_tkemail_footer_donate" style="text-decoration: none; color: #66cc00; padding-bottom: 10px; white-space: nowrap;" target="_blank" title="捐款支持">捐款支持</a></td>
+            <td style="width: 25%; text-align: center;"><a href="http://www.greenpeace.org/taiwan/" style="text-decoration: none; color: #66cc00; padding-bottom: 10px; white-space: nowrap;" target="_blank" title="瀏覽綠色和平首頁">首頁</a></td>
+            <td style="width: 25%; text-align: center;"><a href="https://act.greenpeace.org/ea-action/action?ea.client.id=1853&amp;ea.campaign.id=58703&amp;email={user_data~email}" style="text-decoration: none; color: #66cc00; padding-bottom: 10px; white-space: nowrap;" target="_blank" title="取消訂閱">取消訂閱</a></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<div>
+<table style="background-color: #ffffff; padding: 0px 20px; width: 100%; border: 0;">
+    <tbody>
+        <tr>
+            <td align="left" style="padding-left: 0px; padding-right: 0px; font-size: 12px; line-height: 1.5em; font-family: 黑體, 'Microsoft JhengHei', 'Heiti TC', Helvetica, sans-serif; color: #336633;"><span style="padding-right: 8px;">會員查詢：+886 (02) 2361-2025 </span><a href="mailto:donor.services.tw@greenpeace.org" style="text-decoration: none; color: #336633; letter-spacing: 0px;" title="會員查詢">donor.services.tw@greenpeace.org</a></td>
+        </tr>
+        <tr>
+            <td align="left" style="padding-left: 0px; padding-right: 0px; font-size: 12px; line-height: 1.5em; font-family: 黑體, 'Microsoft JhengHei', 'Heiti TC', Helvetica, sans-serif; color: #336633;"><span style="padding-right: 8px;">一般查詢：+886 (02) 2361-2351 </span><a href="mailto:inquiry.tw@greenpeace.org" style="text-decoration: none; color: #336633; letter-spacing: 0px;" title="一般查詢">inquiry.tw@greenpeace.org</a></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<div style="margin: 10px 20px;"><a href="https://www.facebook.com/greenpeace.org.tw/" style="text-decoration:none; margin-right:15px;" title="綠色和平在 Facebook"><img alt="綠色和平在 Facebook" src="http://ddc.greenpeace.org.tw/others/i-fb-50.png" style="display: inline; width: 30px;" /> </a> <a href="https://www.instagram.com/greenpeace_tw/" style="text-decoration: none; margin-right:15px;" title="綠色和平在 Instagram"> <img alt="綠色和平在 Instagram" src="http://ddc.greenpeace.org.tw/others/i-ig-50.png" style="display: inline; width: 30px;" /> </a> <a href="https://www.youtube.com/user/TheGreenpeaceorgtw/" style="text-decoration: none; margin-right:15px;" title="綠色和平在 Youtube"> <img alt="綠色和平在 Youtube" src="http://ddc.greenpeace.org.tw/others/i-yt-50.png" style="display: inline; width: 30px;" /> </a> <a href="https://lin.ee/tbaeJs9" style="text-decoration: none; margin-right:15px;" title="綠色和平在 Line"> <img alt="綠色和平在 Line" src="https://change.greenpeace.org.tw/2019/email/line-icon.png" style="display: inline; width: 30px;" /> </a></div>
+
+<div style="margin-bottom: -15px;"><!--[if (gte mso 9)|(IE)]>
+            <table bgcolor="#66cc00" align="center" border="0" cellspacing="0" cellpadding="20" width="600">
+            <![endif]--><!--[if !IE]-->
+<table style="background-color: #66cc00; padding: 5px 0px; width: 100%;"><!--[endif]-->
+    <tbody>
+        <tr>
+            <td style="width: 15px;">&nbsp;</td>
+            <td align="left" style="padding-left: 0px; padding-right: 0px; font-size: 12px; line-height: 1.5em; font-family: 黑體, 'Microsoft JhengHei', 'Heiti TC', Helvetica, sans-serif; color: #ffffff;">Copyright &copy;2020 綠色和平 <span style="padding: 0 5px;">|</span> 10045臺北市中正區重慶南路一段109號</td>
+            <td style="width: 15px;">&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>

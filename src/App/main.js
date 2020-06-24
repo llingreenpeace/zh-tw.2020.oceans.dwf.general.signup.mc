@@ -1,10 +1,10 @@
 const {$, anime, autosize, Cookies, Highcharts, dataLayer} = window
 
-const donateUrl = "https://act.greenpeace.org/page/4723/donate/1?campaign=polar&ref=savethearctic_thankyou_page";
-const shareUrl = "https://act.greenpeace.org/page/60861/petition/1";
-const shareFBUrl = "https://act.greenpeace.org/page/60861/petition/1";
-const shareLineUrl = "https://act.greenpeace.org/page/60861/petition/1";
-const redirectDonateLink = "https://act.greenpeace.org/page/4723/donate/1?campaign=polar&ref=savethearctic_thankyou_page"
+const donateUrl = "https://act.greenpeace.org/page/4723/donate/1?ref=2020-dwf_thankyou_page";
+const shareUrl = "https://act.greenpeace.org/page/63089/petition/1";
+const shareFBUrl = "https://act.greenpeace.org/page/63089/petition/1";
+const shareLineUrl = "https://act.greenpeace.org/page/63089/petition/1";
+const redirectDonateLink = "https://act.greenpeace.org/page/4723/donate/1?ref=2020-dwf_thankyou_page"
 
 window.donate = () => {
 	window.open(
@@ -18,8 +18,8 @@ window.share = () => {
 		// we can use web share!
 		navigator
 			.share({
-				title: "阻止破壞北極 今天立即加入全球行動！",
-				text: "全賴有您，守護北極的力量日益強大。我們團結一起，讓守護北極的呼聲，揚得更遠！經過三年不懈的努力、超過700萬人揭露SHELL的野心；九月底，石油公司SHELL終於止步北極！現在，讓我們進一步確保所有石油公司永不復返。",
+				title: "我守護漁工人權，支持海洋永續！",
+				text: "身為遠洋漁業強權，我們更應該帶領改變，守護漁工人權，現在就加入連署，用你的行動，督促產業進步、守護漁工人權，成為其他國家的典範。",
 				url: shareUrl
 			})
 			.then(() => console.log("Successfully shared"))
