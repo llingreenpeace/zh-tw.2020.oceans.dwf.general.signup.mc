@@ -1038,7 +1038,7 @@ body.mobile #principal_form.form {
 
 /* line 212, /Users/lattecreative/RubymineProjects/GreenPeace-SavetheArctic/source/css/partials/_320grid.sass */
 #principal_form.form .progress_bar {
-    font-size: 0.625em;
+    font-size: 90%;
     font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -3061,7 +3061,7 @@ body[lang=es-CO] #thankyou.container .share_donate .donate {
 
     /* line 67, /Users/lattecreative/RubymineProjects/GreenPeace-SavetheArctic/source/css/partials/_640grid.sass */
     #principal_form.form .progress_bar {
-        font-size: 0.6875em;
+        /*font-size: 0.6875em;*/
     }
 
     /* line 83, /Users/lattecreative/RubymineProjects/GreenPeace-SavetheArctic/source/css/partials/_640grid.sass */

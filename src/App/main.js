@@ -19,7 +19,7 @@ window.share = () => {
 		navigator
 			.share({
 				title: "我守護漁工人權，支持海洋永續！",
-				text: "身為遠洋漁業強權，我們更應該帶領改變，守護漁工人權，現在就加入連署，用你的行動，督促產業進步、守護漁工人權，成為其他國家的典範。",
+				text: "身為遠洋漁業強權，我們更應該帶領改變，守護漁工人權，現在就加入連署，用您的行動，督促產業進步、守護漁工人權，成為其他國家的典範。",
 				url: shareUrl
 			})
 			.then(() => console.log("Successfully shared"))
@@ -75,14 +75,18 @@ var pageInit = function(){
 		"taiwan-phone",
 		function (value, element) {
 
-			const phoneReg1 = new RegExp(/0\d{1,2}-\d{6,8}$/).test(value);
-			const phoneReg2 = new RegExp(/0\d{1,2}\d{6,8}$/).test(value);
-			const phoneReg3 = new RegExp(/((?=(09))[0-9]{10})$/).test(value);
-			const phoneReg4 = new RegExp(/(886\d{1,2}\d{6,8})$/).test(value);
-			const phoneReg5 = new RegExp(/(886\d{1,2}-\d{7,9})$/).test(value);
+			// const phoneReg1 = new RegExp(/^0\d{1,2}-\d{6,8}$/).test(value);
+			// const phoneReg2 = new RegExp(/^0\d{1,2}\d{6,8}$/).test(value);
+			// const phoneReg3 = new RegExp(/^((?=(09))[0-9]{10})$/).test(value);
+			// const phoneReg4 = new RegExp(/^(886\d{1,2}\d{6,8})$/).test(value);
+			// const phoneReg5 = new RegExp(/^(886\d{1,2}-\d{7,9})$/).test(value);
+
+			const phoneReg6 = new RegExp(/^(0|886|\+886)?(9\d{8})$/).test(value);
+			const phoneReg7 = new RegExp(/^(0|886|\+886){1}[2-8]-?\d{6,8}$/).test(value);
 
 			if ($('#center_phone').val()) {
-				return (phoneReg1 || phoneReg2 || phoneReg3 || phoneReg4 || phoneReg5)
+				// return (phoneReg1 || phoneReg2 || phoneReg3 || phoneReg4 || phoneReg5)
+				return (phoneReg6 || phoneReg7)
 			}
 			console.log('phone testing')
 			return true
