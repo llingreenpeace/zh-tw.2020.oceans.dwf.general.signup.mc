@@ -102,13 +102,14 @@ var pageInit = function(){
 		submitHandler: function(form) {
 			showFullPageLoading()
 
-			dataLayer.push({
-				'event': 'gaEvent',
-				'eventCategory': 'petitions',
-				'eventAction': 'signup',
-				'eventLabel': '2020-savethearctic',
-				'eventValue': undefined
-			});
+			// for mc tracking
+			// dataLayer.push({
+			// 	'event': 'gaEvent',
+			// 	'eventCategory': 'petitions',
+			// 	'eventAction': 'signup',
+			// 	'eventLabel': '2020-savethearctic',
+			// 	'eventValue': undefined
+			// });
 
 
 			$('#en__field_supporter_firstName').val($('#center_name').val());

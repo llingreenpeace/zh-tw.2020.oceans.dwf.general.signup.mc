@@ -41,7 +41,6 @@ $(document).ready(function () {
 			}
 		})
 		.then(() => {
-
 			/*Bar Animation*/
 			var value = numResponses;
 			//var value=5319498;
