@@ -72,6 +72,14 @@ var pageInit = function(){
 	);
 
 	$.validator.addMethod(
+		'validate-name',
+		function(value, element){
+			return new RegExp(/^[\u4e00-\u9fa5_a-zA-Z_ ]{1,40}$/i).test(value);
+		},
+		'姓氏格式不正確，請不要輸入數字或符號'
+	);
+
+	$.validator.addMethod(
 		"taiwan-phone",
 		function (value, element) {
 
@@ -95,7 +103,8 @@ var pageInit = function(){
 
 	$.validator.addClassRules({ // connect it to a css class
 		"email": {email: true},
-		"taiwan-phone" : { "taiwan-phone" : true }
+		"taiwan-phone" : { "taiwan-phone" : true },
+		"validate-name": { "validate-name" : true }
 	});
 
 	$("#center_sign-form").validate({
