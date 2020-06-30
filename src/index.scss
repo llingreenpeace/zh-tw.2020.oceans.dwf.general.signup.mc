@@ -54,6 +54,16 @@ code {
 	}
 }
 
+a.not-obvious-link {
+	color: #3577D4;
+	// vertical-align: super;
+	font-size: 75%;
+	display: inline-block;
+	margin-left: 2px;
+	margin-right: 3px;
+	text-decoration: none;
+}
+
 @keyframes fadeinphoto {
 	0% {
 		opacity: 0;
