@@ -23,63 +23,48 @@ $(window).load(function () {
 
 $(document).ready(function () {
 
-	var numSignupTarget = parseInt($('input[name="numSignupTarget"]').val(), 10) || 0,
-		numResponses = parseInt($('input[name="numResponses"]').val(), 10) || 0
+	var numSignupTarget = parseInt(document.querySelector('input[name="numSignupTarget"]').value, 10) || 0,
+		numResponses = parseInt(document.querySelector('input[name="numResponses"]').value, 10) || 0
 
+	document.getElementById('targetNumber').innerHTML = numSignupTarget;
 
-	fetch("https://act.greenpeace.org/page/widget/701831")
-		.then((response) => response.json())
-		.then((response) => {
-			if (response) {
-				response.data.rows.forEach(row => {
-					row.columns.forEach(c => {
-						if (c.name==="participatingSupporters") {
-							numResponses += parseInt(c.value, 10)
-						}
-					})
-				})
-			}
-		})
-		.then(() => {
-			/*Bar Animation*/
-			var value = numResponses;
-			//var value=5319498;
-			var target = 50000;
-			var size = (value / target) * 100;
-			var width_container = $("#progress_container").width();
-			var position = ((width_container) - 90) * size / 100;
+	/*Bar Animation*/
+	var value = numResponses;	
+	var target = numSignupTarget;
+	var size = (value / target) * 100;
+	var width_container = $("#progress_container").width();
+	var position = ((width_container) - 90) * size / 100;
 
-			$("#content_bar").animate({
-				width: size + "%"
-			}, {
-				duration: 3000,
-				easing: 'easeOutCubic',
-				complete: function () {
+	$("#content_bar").animate({
+		width: size + "%"
+	}, {
+		duration: 3000,
+		easing: 'easeOutCubic',
+		complete: function () {
 
-				}
-			});
-			$("#down_content_bar").animate({
-				width: size + "%"
-			}, {
-				duration: 3000,
-				easing: 'easeOutCubic',
-				complete: function () {
+		}
+	});
+	$("#down_content_bar").animate({
+		width: size + "%"
+	}, {
+		duration: 3000,
+		easing: 'easeOutCubic',
+		complete: function () {
 
-				}
-			});
+		}
+	});
 
-			/*Number Animation*/
+	/*Number Animation*/
 
-			var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
-			$("#number").animateNumber({
-				number: value,
-				numberStep: comma_separator_number_step
-			}, 3000);
-			$("#down_number").animateNumber({
-				number: value,
-				numberStep: comma_separator_number_step
-			}, 3000);
-		})
+	var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
+	$("#number").animateNumber({
+		number: value,
+		numberStep: comma_separator_number_step
+	}, 3000);
+	$("#down_number").animateNumber({
+		number: value,
+		numberStep: comma_separator_number_step
+	}, 3000);
 });
 
 $(document).ready(function () {
@@ -102,7 +87,7 @@ $(document).ready(function () {
 	$('.phoneExample').appendTo($('.normal.phone'));
 });
 
-
+/*
 const createBirthYearList = function() {
 	const yearBegin = 1900
 	const birthYear = document.getElementById('en__field_supporter_NOT_TAGGED_6')
@@ -139,3 +124,4 @@ const enFormType = function() {
 
 createBirthYearList();
 enFormType();
+*/

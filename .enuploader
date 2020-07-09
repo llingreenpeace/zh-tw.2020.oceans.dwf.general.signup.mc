@@ -7,7 +7,7 @@ let raw = fs.readFileSync(path.join(os.homedir(), ".npm-en-uploader-secret"));
 let secrets = JSON.parse(raw);
 
 // the target en pageId
-const enPageId = 63089 // 63089 is the 56407 without email to target version
+const enPageId = 27662 // 63089 is the 56407 without email to target version
 
 // build folder path
 const buildDirPath = path.join(__dirname, "build")
@@ -16,7 +16,7 @@ module.exports = {
 	ftp: Object.assign({}, secrets["ftp_tw"], {
 		execute: true,
 		"localDir": buildDirPath,
-		"remoteDir": "/htdocs/2020/petition/zh-tw.2020.oceans.dwf.signup.na",
+		"remoteDir": "/htdocs/2020/petition-test/zh-tw.2020.oceans.dwf.signup.na",
 	}),
 
 	enBase: Object.assign({}, secrets["en"], {

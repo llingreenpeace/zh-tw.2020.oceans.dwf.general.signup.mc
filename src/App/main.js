@@ -1,9 +1,9 @@
 const {$, anime, autosize, Cookies, Highcharts, dataLayer} = window
 
 const donateUrl = "https://act.greenpeace.org/page/4723/donate/1?ref=2020-dwf_thankyou_page";
-const shareUrl = "https://act.greenpeace.org/page/63089/petition/1";
-const shareFBUrl = "https://act.greenpeace.org/page/63089/petition/1";
-const shareLineUrl = "https://act.greenpeace.org/page/63089/petition/1";
+const shareUrl = "https://cloud.greenhk.greenpeace.org/petition.oceans.dwf";
+const shareFBUrl = "https://cloud.greenhk.greenpeace.org/petition.oceans.dwf";
+const shareLineUrl = "https://cloud.greenhk.greenpeace.org/petition.oceans.dwf";
 const redirectDonateLink = "https://act.greenpeace.org/page/4723/donate/1?ref=2020-dwf_thankyou_page"
 
 window.donate = () => {
@@ -35,6 +35,30 @@ window.share = () => {
 	}
 }
 
+/**
+ * Send the tracking event to the ga
+ * @param  {string} eventLabel The ga trakcing name, normally it will be the short campaign name. ex 2019-plastic_retailer
+ * @param  {[type]} eventValue Could be empty
+ * @return {[type]}            [description]
+ */
+const sendPetitionTracking = (eventLabel, eventValue) => {
+	window.dataLayer = window.dataLayer || [];
+
+	window.dataLayer.push({
+	    'event': 'gaEvent',
+	    'eventCategory': 'petitions',
+	    'eventAction': 'signup',
+	    'eventLabel': eventLabel,
+	    'eventValue' : eventValue
+	});
+
+	window.dataLayer.push({
+	    'event': 'fbqEvent',
+	    'contentName': eventLabel,
+	    'contentCategory': 'Petition Signup'
+	});
+}
+
 var pageInit = function(){
 	var _ = this;
 	_.$container = $('#form');
@@ -48,32 +72,30 @@ var pageInit = function(){
 		}
 	});
 
-	$('#center_sign-submit').click(function(e){
-		e.preventDefault();
-		$("#center_sign-form").submit();
-		console.log("center_sign-form submitting")
-	}).end()
-
 	// create the year options
 	let currYear = new Date().getFullYear()
 	for (var i = 0; i < 80; i++) {
 
-		let option = `<option value="01/01/${currYear-i}">${currYear-i}</option>`
+		let option = `<option value="${currYear-i}-01-01">${currYear-i}</option>`
 		$("#center_yearofbirth").append(option);
 		$('#en__field_supporter_NOT_TAGGED_6').append(option);
 	}
 
 	$.validator.addMethod( //override email with django email validator regex - fringe cases: "user@admin.state.in..us" or "name@website.a"
 		'email',
-		function(value, element){
-			return this.optional(element) || /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/i.test(value);
+		(value, element) => {
+			if (value) {
+				return /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/i.test(value);
+			}
+	
+			return true
 		},
 		'Email 格式錯誤'
 	);
 
 	$.validator.addMethod(
 		'validate-name',
-		function(value, element){
+		(value, element) => {
 			return new RegExp(/^[\u4e00-\u9fa5_a-zA-Z_ ]{1,40}$/i).test(value);
 		},
 		'姓氏格式不正確，請不要輸入數字或符號'
@@ -81,25 +103,17 @@ var pageInit = function(){
 
 	$.validator.addMethod(
 		"taiwan-phone",
-		function (value, element) {
-
-			// const phoneReg1 = new RegExp(/^0\d{1,2}-\d{6,8}$/).test(value);
-			// const phoneReg2 = new RegExp(/^0\d{1,2}\d{6,8}$/).test(value);
-			// const phoneReg3 = new RegExp(/^((?=(09))[0-9]{10})$/).test(value);
-			// const phoneReg4 = new RegExp(/^(886\d{1,2}\d{6,8})$/).test(value);
-			// const phoneReg5 = new RegExp(/^(886\d{1,2}-\d{7,9})$/).test(value);
-
+		(value, element) => {
 			const phoneReg6 = new RegExp(/^(0|886|\+886)?(9\d{8})$/).test(value);
 			const phoneReg7 = new RegExp(/^(0|886|\+886){1}[2-8]-?\d{6,8}$/).test(value);
-
-			if ($('#center_phone').val()) {
-				// return (phoneReg1 || phoneReg2 || phoneReg3 || phoneReg4 || phoneReg5)
+	
+			if (value) {
 				return (phoneReg6 || phoneReg7)
 			}
-			console.log('phone testing')
 			return true
 		},
-		"電話格式不正確，請只輸入數字 0912345678 和 02-23612351")
+		"電話格式不正確，請只輸入數字 0912345678 和 02-23612351"
+	);
 
 	$.validator.addClassRules({ // connect it to a css class
 		"email": {email: true},
@@ -113,80 +127,61 @@ var pageInit = function(){
 			element.parents("div.form-field:first").after( error );
 		},
 		submitHandler: function(form) {
-			showFullPageLoading()
+			showFullPageLoading();			
 
-			// for mc tracking
-			// dataLayer.push({
-			// 	'event': 'gaEvent',
-			// 	'eventCategory': 'petitions',
-			// 	'eventAction': 'signup',
-			// 	'eventLabel': '2020-savethearctic',
-			// 	'eventValue': undefined
-			// });
-
-
-			$('#en__field_supporter_firstName').val($('#center_name').val());
-			$('#en__field_supporter_lastName').val($('#center_lastname').val());
-			$('#en__field_supporter_emailAddress').val($('#center_email').val());
+			// collect values in the mc form
+			$('#mc-form [name="FirstName"]').val($('#center_name').val());
+			$('#mc-form [name="LastName"]').val($('#center_lastname').val());
+			$('#mc-form [name="Email"]').val($('#center_email').val());
 
 			if (!$('#center_phone').prop('required') && !$('#center_phone').val()) {
-			    $('#en__field_supporter_phoneNumber').val('0900000000');
+			 	$('#mc-form [name="MobilePhone"]').val('0900000000').replace(/^0{1}/, '');
 			} else {
-			    $('#en__field_supporter_phoneNumber').val($('#center_phone').val());
+			 	$('#mc-form [name="MobilePhone"]').val($('#center_phone').val().replace(/^0{1}/, ''));
 			}
-			$('#en__field_supporter_NOT_TAGGED_6').val($('#center_yearofbirth').val());
-			$("form.en__component--page").submit();
+			$('#mc-form [name="Birthdate"]').val($('#center_yearofbirth').val());
+			
+			$('#mc-form [name="OptIn"]').eq(0).prop("checked", $('#center_rememberme').prop('checked')); 
+						
+			let formData = new FormData();
+			$("#mc-form input").each(function (idx, el) {
+				let v = null
+				if (el.type==="checkbox") {
+					v = el.checked
+				} else {
+					v = el.value
+				}
 
+				formData.append(el.name, v)
+				console.log("Use", el.name, v)
+			});
+			
+			// send the request			
+			let postUrl = $("#mc-form").prop("action");
+			fetch(postUrl, {
+				method: 'POST',
+				body: formData
+			})
+			.then(response => response.json())
+			.then(response => {
+				console.log('fetch response', response);
+				if (response) {
+					if (response.Supporter) { // ok, go to next page
+						sendPetitionTracking("2020-oceans_dwf");
+					}
 
-			// These are scripts for MC version
-			// // mc forms
-			// $('#mc-form [name="FirstName"]').val($('#center_name').val());
-			// $('#mc-form [name="LastName"]').val($('#center_lastname').val());
-			// $('#mc-form [name="Email"]').val($('#center_email').val());
-
-			// if (!$('#center_phone').prop('required') && !$('#center_phone').val()) {
-			// 	$('#mc-form [name="MobilePhone"]').val('0900000000');
-			// } else {
-			// 	$('#mc-form [name="MobilePhone"]').val($('#center_phone').val());
-			// }
-			// $('#mc-form [name="Birthdate"]').val($('#center_yearofbirth').val());
-			// $('#mc-form [name="OptIn"]')[0].checked = $('#center_rememberme')[0].checked;
-
-			// // collect values in the mc form
-			// let formData = new FormData();
-			// $("#mc-form input").each(function (idx, el) {
-			// 	let v = null
-			// 	if (el.type==="checkbox") {
-			// 		v = el.checked
-			// 	} else {
-			// 		v = el.value
-			// 	}
-
-			// 	formData.append(el.name, v)
-			// 	console.log("Use", el.name, v)
-			// })
-
-			// // send the request
-			// let postUrl = $("#mc-form").prop("action")
-			// fetch(postUrl, {
-			// 	method: 'POST',
-			// 	body: formData
-			// })
-			// .then(response => response.json())
-			// .then(response => {
-			// 	if (response) {
-			// 		hideFullPageLoading()
-			// 		changeToPage(2)
-
-			// 	  console.log('fetch response', response);
-			//   }
-			// })
-			// .catch(error => {
-			// 	hideFullPageLoading()
-
-			// 	console.warn("fetch error")
-			// 	console.error(error)
-			// })
+					hideFullPageLoading();
+					changeToPage(2);
+					
+				  //console.log('fetch response', response);
+			  	}
+			})
+			.catch(error => {
+				hideFullPageLoading();
+				alert(error);
+				console.warn("fetch error");
+				console.error(error);
+			});
 		},
 		invalidHandler: function(event, validator) {
 			// 'this' refers to the form

@@ -1,12 +1,13 @@
 {
-  "name": "zh-TW.2020.polar.savethearctic.signup",
-  "homepage": "https://change.greenpeace.org.tw/2020/petition/zh-TW.2020.polar.savethearctic/",
+  "name": "zh-TW.2020.oceans.dwf.mc",
+  "homepage": "https://change.greenpeace.org.tw/2020/petition/zh-TW.2020.oceans.dwf.mc/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "email-autocomplete": "^0.2.0",
     "gpea-npm-en-uploader": "greenpeace/gpea-npm-en-uploader",
-    "js-email-autocomplete": "^1.0.3"
+    "js-email-autocomplete": "^1.0.3",
+    "selenium-webdriver": "^4.0.0-alpha.7"
   },
   "devDependencies": {
     "node-sass": "^4.13.1",
@@ -17,7 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:en": "PUBLIC_URL=https://change.greenpeace.org.tw/2020/petition/zh-tw.2020.oceans.dwf.signup.na react-scripts build",
+    "build:en": "set PUBLIC_URL=https://change.greenpeace.org.tw/2020/petition/zh-TW.2020.oceans.dwf.mc&&npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "yarn run build:en && gpea-npm-en-uploader",

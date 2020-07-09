@@ -36,9 +36,9 @@ let buildFolder = path.join(__dirname, "build")
 	EndpointURL = "https://cloud.greenhk.greenpeace.org/up-dev-endpoint",
 	CampaignId = "7010k000000iJ7aAAE",
 	DonationPageUrl = "https://www.greenpeace.org/eastasia/", // not used now
-	interests = ["Arctic"], // Arctic, Climate, Forest, Health, Oceans, Plastics
+	interests = ["Oceans"], // Arctic, Climate, Forest, Health, Oceans, Plastics
 	ftpConfigName = "ftp_tw", // refer to ~/.npm-en-uploader-secret
-	ftpRemoteDir = "/htdocs/2020/petition/zh-TW.2020.polar.savethearctic.mc"
+	ftpRemoteDir = "/htdocs/2020/petition/zh-TW.2020.oceans.dwf.mc"
 
 let indexHtmlFilePath = path.join(buildFolder, "index.html")
 let fbuf = fs.readFileSync(indexHtmlFilePath)
@@ -85,8 +85,8 @@ let formTmpl =
 		<input placeholder="Email" name="Email" type="email" value="">
 		<input placeholder="MobilePhone" name="MobilePhone" type="tel" value="">
 		<input placeholder="Birthdate" name="Birthdate" type="text" value="">
+		<input placeholder="MobileCountryCode" name="MobileCountryCode" type="text" value="886">
 		<input placeholder="OptIn" name="OptIn" type="checkbox" value="">
-
 		<input type="hidden" name="req" value="post_data">
 		<input type="hidden" name="LeadSource" value="%%=v(@LeadSource)=%%">
 		<input type="hidden" name="Petition_Interested_In_Arctic__c" value="%%=v(@Petition_Interested_In_Arctic__c)=%%">
@@ -101,14 +101,12 @@ let formTmpl =
 		<input type="hidden" name="UtmCampaign" value="%%=v(@UtmCampaign)=%%">
 		<input type="hidden" name="UtmContent" value="%%=v(@UtmContent)=%%">
 		<input type="hidden" name="UtmTerm" value="%%=v(@UtmTerm)=%%">
-		<input type="hidden" name="DonationPageUrl" value="%%=v(@DonationPageUrl)=%%">
-		<input name="req" type="hidden" value="post_data">
-
+		<input type="hidden" name="DonationPageUrl" value="%%=v(@DonationPageUrl)=%%">	
+		<input type="hidden" name="Company" value="null">	
 		<input type="hidden" name="numSignupTarget" value="%%=v(@Petition_Signup_Target__c)=%%">
 		<input type="hidden" name="numResponses" value="%%=v(@NumberOfResponses)=%%">
 	</form>
 `
-
 
 let matches = content.match(/(<form[^<]+mc-form(.|[\r\n])*form>)/)
 
@@ -132,9 +130,7 @@ if (matches) {
 let headersTmpl =
 `%%[
 	VAR @UtmMedium, @UtmSource, @UtmCampaign, @UtmContent, @UtmTerm, @LeadSource, @PetitionIssueType, @CampaignId, @DonationPageUrl
-
 	/*Set these params when creating a new petition page, for each core interest of the petition set the value to "true" to update the supporters CRM profile otherwise leave the value blank or with false value */
-
 	SET @EndpointURL = "${EndpointURL}"
 	SET @CampaignId = "${CampaignId}"
 	SET @LeadSource = "Petition - ${interests.join(",")}"
@@ -145,16 +141,13 @@ let headersTmpl =
 	SET @Petition_Interested_In_Oceans__c       = "${interests.indexOf("Oceans")>=0 ? "true" : "false"}"
 	SET @Petition_Interested_In_Plastics__c     = "${interests.indexOf("Plastics")>=0 ? "true" : "false"}"
 	SET @DonationPageUrl = "${DonationPageUrl}"
-
 	/**** Retreive number of responses in campaign used for any petition where petition sign up progress bar is needed to display signups compared to targeted number of signups ****/
 	SET @CampaignRows = RetrieveSalesforceObjects("Campaign","NumberOfResponses, Petition_Signup_Target__c","Id","=",@CampaignId)
-
 	IF RowCount(@CampaignRows) > 0 THEN
 		SET @CampaignSubscriberRow = Row(@CampaignRows, 1)
 		SET @NumberOfResponses = Field(@CampaignSubscriberRow, "NumberOfResponses")
 		SET @Petition_Signup_Target__c = Field(@CampaignSubscriberRow, "Petition_Signup_Target__c")
 	ENDIF
-
 	/*UTM Tracking Params*/
 	SET @UtmMedium          = RequestParameter("utm_medium")
 	SET @UtmSource          = RequestParameter("utm_source")
