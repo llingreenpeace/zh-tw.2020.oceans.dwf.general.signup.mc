@@ -1,10 +1,10 @@
 const {$, anime, autosize, Cookies, Highcharts, dataLayer} = window
 
-const donateUrl = "https://act.greenpeace.org/page/4723/donate/1?ref=2020-oceans_dwf_thankyou_page";
+const donateUrl = "https://act.greenpeace.org/page/4723/donate/1?ref=2020-oceans_dwf_thankyou_page&campaign=oceans";
 const shareUrl = "https://cloud.greenhk.greenpeace.org/petition.oceans.dwf";
 const shareFBUrl = "https://cloud.greenhk.greenpeace.org/petition.oceans.dwf";
 const shareLineUrl = "https://cloud.greenhk.greenpeace.org/petition.oceans.dwf";
-const redirectDonateLink = "https://act.greenpeace.org/page/4723/donate/1?ref=2020-oceans_dwf_thankyou_page"
+const redirectDonateLink = "https://act.greenpeace.org/page/4723/donate/1?ref=2020-oceans_dwf_thankyou_page&campaign=oceans"
 
 window.donate = () => {
 	window.open(
@@ -135,9 +135,9 @@ var pageInit = function(){
 			$('#mc-form [name="Email"]').val($('#center_email').val());
 
 			if (!$('#center_phone').prop('required') && !$('#center_phone').val()) {
-			 	$('#mc-form [name="MobilePhone"]').val('0900000000').replace(/^0{1}/, '');
+			 	$('#mc-form [name="MobilePhone"]').val('0900000000');
 			} else {
-			 	$('#mc-form [name="MobilePhone"]').val($('#center_phone').val().replace(/^0{1}/, ''));
+			 	$('#mc-form [name="MobilePhone"]').val($('#center_phone').val());
 			}
 			$('#mc-form [name="Birthdate"]').val($('#center_yearofbirth').val());
 			
