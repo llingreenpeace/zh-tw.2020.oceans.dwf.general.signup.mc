@@ -23,7 +23,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="督促豐群水產，拒絕血汗海鮮">
 	<meta property="og:description" content="臺灣遠洋漁業中仍存在強迫勞動及非法漁業問題，促進漁業改革、保障守法業者，需要公眾的力量，請和我們一起呼籲水產貿易龍頭企業「豐群水產」承諾保障漁工人權、拒絕血汗海鮮、守護海洋生態，邁向永續漁業！">
-	<meta property="og:url" content="https://cloud.greenhk.greenpeace.org/petition.oceans.dwf">
+	<meta property="og:url" content="https://cloud.greentw.greenpeace.org/petition-oceans-dwf">
 	<meta property="og:image" content="%PUBLIC_URL%/img/og-petition.jpg?v=123">
 
 	<!-- <base href="https://www.peoplevsoil.org/zh-HK/" /> -->
@@ -119,16 +119,16 @@
 				</div>
 				<div class='progress_bar' id='progress_bar'>
 					<div class='sign_counter' id='counter'>
-						<span id='number'>
+						<span id='petition-count'>
 							0
 						</span>
 						人已參與連署
 					</div>
-					<div class='container_bar'>
+					<div class='container_bar' id='container_bar'>
 						<div class='content' id='content_bar'></div>
 					</div>
 					<div id='target'>
-						<p>號召更多朋友參與，達到最新目標：<strong id="targetNumber">0</strong> 連署。</p>
+						<p>號召更多朋友參與，達到最新目標：<strong id="petition-target">0</strong> 連署。</p>
 						<p>臺灣遠洋漁業中仍存在強迫勞動及非法漁業問題，請和我們共同呼籲世界級的豐群水產承諾漁業革新，邁向永續漁業！</p>
 					</div>
 				</div>
@@ -179,7 +179,7 @@
 							<input name="send_updates" id="center_rememberme" value="1" checked="checked"
 								type="checkbox" />
 							<span class="remembertext">
-								我同意綠色和平持續為我更新環境專案的最新資訊，並按照其<a href="https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/?ref=2020-oceans_dwf_form_homepage" target="_blank" title="隱私保護政策">個人資料政策</a>與我保持聯絡。
+								我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考<a href="https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/?ref=2020-oceans_sanctuaries_form_homepage" target="_blank" title="隱私保護政策">隱私保護政策</a>。
 							</span>
 						</p>
 					</fieldset>
@@ -476,11 +476,11 @@
 						<li><b>2015年，綠色和平在太平洋直擊揭露臺灣漁船非法捕魚，歐盟隨即對臺灣發出黃牌警告</b></li>
 						<li><b>2016年，綠色和平與公民團體一起促成臺灣政府修訂漁業三法，加強執法力道，嚴懲非法捕撈行為，落實漁業改革</b></li>
 						<li><b>2019年，雖然歐盟解除黃牌警告，但臺灣遠洋漁業中非法漁業與強迫勞動問題仍存</b></li>
-					</ul>
-					<p>海洋正面臨著資源枯竭與嚴重的生態危機，漁業改革是最佳解法，您是否願意為漁業改革工作出一份力呢？</p>
+					</ul>				
 				</div>
 
-				<button class="btn donate_btn" onclick="window.donate();">
+				<p class="is-hidden-at-dd-page-only">海洋正面臨著資源枯竭與嚴重的生態危機，漁業改革是最佳解法，您是否願意為漁業改革工作出一份力呢？</p>
+				<button class="btn donate_btn is-hidden-at-dd-page-only" onclick="window.donate();">
 					支持我們
 				</button>
 				<p>敬邀您為海洋募集更多群眾力量，和我們一起為守護海洋盡力，請分享訊息讓更多人看見。</p>

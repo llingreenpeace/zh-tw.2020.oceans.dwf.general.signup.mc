@@ -20,53 +20,6 @@ $(window).load(function () {
 	});
 });
 
-
-$(document).ready(function () {
-
-	var numSignupTarget = parseInt(document.querySelector('input[name="numSignupTarget"]').value, 10) || 0,
-		numResponses = parseInt(document.querySelector('input[name="numResponses"]').value, 10) || 0
-
-	document.getElementById('targetNumber').innerHTML = numSignupTarget;
-
-	/*Bar Animation*/
-	var value = numResponses;	
-	var target = numSignupTarget;
-	var size = (value / target) * 100;
-	var width_container = $("#progress_container").width();
-	var position = ((width_container) - 90) * size / 100;
-
-	$("#content_bar").animate({
-		width: size + "%"
-	}, {
-		duration: 3000,
-		easing: 'easeOutCubic',
-		complete: function () {
-
-		}
-	});
-	$("#down_content_bar").animate({
-		width: size + "%"
-	}, {
-		duration: 3000,
-		easing: 'easeOutCubic',
-		complete: function () {
-
-		}
-	});
-
-	/*Number Animation*/
-
-	var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
-	$("#number").animateNumber({
-		number: value,
-		numberStep: comma_separator_number_step
-	}, 3000);
-	$("#down_number").animateNumber({
-		number: value,
-		numberStep: comma_separator_number_step
-	}, 3000);
-});
-
 $(document).ready(function () {
 	if (document.body.clientWidth < 640) {
 		$(".container_left").empty();
@@ -85,6 +38,16 @@ $(document).ready(function () {
 	}
 
 	$('.phoneExample').appendTo($('.normal.phone'));
+
+	//隱藏dd頁面的捐款按鈕
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    if (urlParams.get('utm_source') === "dd") {
+		$('.is-hidden-at-dd-page-only').hide();
+		
+		//移除電話欄位 required Attr
+		$('#center_phone').removeAttr("required");
+    }
 });
 
 /*

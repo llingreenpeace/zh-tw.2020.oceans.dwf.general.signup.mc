@@ -33,8 +33,8 @@ const FTPS = require('ftps');
 
 // definitions
 let buildFolder = path.join(__dirname, "build")
-	EndpointURL = "https://cloud.greenhk.greenpeace.org/up-dev-endpoint",
-	CampaignId = "7010k000000iJ7aAAE",
+	EndpointURL = "https://cloud.greentw.greenpeace.org/petition-pp",
+	CampaignId = "7012u000000OulnAAC",
 	DonationPageUrl = "https://www.greenpeace.org/eastasia/", // not used now
 	interests = ["Oceans"], // Arctic, Climate, Forest, Health, Oceans, Plastics
 	ftpConfigName = "ftp_tw", // refer to ~/.npm-en-uploader-secret
@@ -170,9 +170,10 @@ fs.writeFileSync(indexHtmlFilePath, content)
 console.log('content patched')
 
 // upload the folder to FTP
+/*
 let raw = fs.readFileSync(path.join(os.homedir(), ".npm-en-uploader-secret"));
 let secrets = JSON.parse(raw);
 
 let ftpSetting = secrets[ftpConfigName]
 ftpSetting["remoteDir"] = ftpRemoteDir
-upload_folder(ftpSetting, buildFolder)
+upload_folder(ftpSetting, buildFolder)*/

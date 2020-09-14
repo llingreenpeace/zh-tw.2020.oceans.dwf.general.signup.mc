@@ -1,10 +1,11 @@
+var ProgressBar = require('progressbar.js')
 const {$, anime, autosize, Cookies, Highcharts, dataLayer} = window
 
-const donateUrl = "https://act.greenpeace.org/page/4723/donate/1?ref=2020-oceans_dwf_thankyou_page&campaign=oceans";
-const shareUrl = "https://cloud.greenhk.greenpeace.org/petition.oceans.dwf";
-const shareFBUrl = "https://cloud.greenhk.greenpeace.org/petition.oceans.dwf";
-const shareLineUrl = "https://cloud.greenhk.greenpeace.org/petition.oceans.dwf";
-const redirectDonateLink = "https://act.greenpeace.org/page/4723/donate/1?ref=2020-oceans_dwf_thankyou_page&campaign=oceans"
+const donateUrl = "https://supporter.ea.greenpeace.org/tw/s/donate?ref=2020-oceans_dwf_thankyou_page&campaign=oceans";
+const shareUrl = "https://cloud.greentw.greenpeace.org/petition-oceans-dwf?utm_campaign=2020-dwf&utm_source=facebook&utm_medium=socialorganic&utm_content=2020-dwv_petition_tkpage";
+const shareFBUrl = "https://cloud.greentw.greenpeace.org/petition-oceans-dwf?utm_campaign=2020-dwf&utm_source=facebook&utm_medium=socialorganic&utm_content=2020-dwv_petition_tkpage";
+const shareLineUrl = "https://cloud.greentw.greenpeace.org/petition-oceans-dwf?utm_campaign=2020-dwf&utm_source=facebook&utm_medium=socialorganic&utm_content=2020-dwv_petition_tkpage";
+const redirectDonateLink = "https://supporter.ea.greenpeace.org/tw/s/donate?ref=2020-oceans_dwf_thankyou_page&campaign=oceans"
 
 window.donate = () => {
 	window.open(
@@ -22,17 +23,43 @@ window.share = () => {
 				text: "身為遠洋漁業強權，我們更應該帶領改變，守護漁工人權，現在就加入連署，用您的行動，督促產業進步、守護漁工人權，成為其他國家的典範。",
 				url: shareUrl
 			})
-			.then(() => console.log("Successfully shared"))
 			.catch(error => console.log("Error sharing:", error));
 	} else {
 		var baseURL = "https://www.facebook.com/sharer/sharer.php";
 
-		console.log('open', baseURL + "?u=" + encodeURIComponent(shareFBUrl))
+		//console.log('open', baseURL + "?u=" + encodeURIComponent(shareFBUrl))
 		window.open(
 			baseURL + "?u=" + encodeURIComponent(shareFBUrl),
 			"_blank"
 		);
 	}
+}
+
+function initProgressBar() {
+    let barTarget = document.querySelector('input[name="barTarget"]') ? parseInt(document.querySelector('input[name="barTarget"]').value, 10) : 50000;
+    let barNumber = document.querySelector('input[name="barNumber"]') ? parseInt(document.querySelector('input[name="barNumber"]').value, 10) : 18280;
+
+    if (barNumber < 18280)
+		barNumber += 18280;
+	if (isNaN(barTarget) || barTarget < 50000)
+	barTarget = 50000;
+    if (barNumber > barTarget)
+        barTarget = Math.ceil(barNumber / 10000) * 10000;
+    
+    $('#petition-count').html(barNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+    $('#petition-target').html(barTarget.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
+	
+    let bar = new ProgressBar.Line('#content_bar', {
+        strokeWidth: 2,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: 'rgb(85, 112,71)',
+        trailColor: 'transparent',
+        trailWidth: 2,
+        svgStyle: {width: '100%', height: '80%', borderRadius: "10px", padding: "1px 0"}
+    });
+    //bar.animate(0.15);
+    bar.animate(barNumber / barTarget);
 }
 
 /**
@@ -57,6 +84,9 @@ const sendPetitionTracking = (eventLabel, eventValue) => {
 	    'contentName': eventLabel,
 	    'contentCategory': 'Petition Signup'
 	});
+
+	window.uetq = window.uetq || [];  
+	window.uetq.push ('event', 'signup', {'event_category': 'petitions', 'event_label': eventLabel, 'event_value': 0});
 }
 
 var pageInit = function(){
@@ -112,7 +142,7 @@ var pageInit = function(){
 			}
 			return true
 		},
-		"電話格式不正確，請只輸入數字 0912345678 和 02-23612351"
+		"電話格式不正確，請只輸入數字 0912345678 和 02-23456789"
 	);
 
 	$.validator.addClassRules({ // connect it to a css class
@@ -123,7 +153,7 @@ var pageInit = function(){
 
 	$("#center_sign-form").validate({
 		errorPlacement: function(error, element) {
-			console.log(error)
+			//console.log(error)
 			element.parents("div.form-field:first").after( error );
 		},
 		submitHandler: function(form) {
@@ -153,7 +183,7 @@ var pageInit = function(){
 				}
 
 				formData.append(el.name, v)
-				console.log("Use", el.name, v)
+				//console.log("Use", el.name, v)
 			});
 			
 			// send the request			
@@ -164,10 +194,10 @@ var pageInit = function(){
 			})
 			.then(response => response.json())
 			.then(response => {
-				console.log('fetch response', response);
+				//console.log('fetch response', response);
 				if (response) {
 					if (response.Supporter) { // ok, go to next page
-						sendPetitionTracking("2020-oceans_dwf");
+						sendPetitionTracking("2020-dwf");
 					}
 
 					hideFullPageLoading();
@@ -178,8 +208,8 @@ var pageInit = function(){
 			})
 			.catch(error => {
 				hideFullPageLoading();
-				alert(error);
-				console.warn("fetch error");
+				//alert(error);
+				//console.warn("fetch error");
 				console.error(error);
 			});
 		},
@@ -187,14 +217,49 @@ var pageInit = function(){
 			// 'this' refers to the form
 			var errors = validator.numberOfInvalids();
 			if (errors) {
-				// console.log(errors)
-				var message = errors===1
-					? 'You missed 1 field. It has been highlighted'
-					: 'You missed ' + errors + ' fields. They have been highlighted';
-				$("div.error").show();
-			} else {
-				$("div.error").hide();
+				console.log(errors)				
 			}
+		}
+	});
+
+	//email suggestion
+	// for email correctness
+	let domains = [
+		"me.com",
+		"outlook.com",
+		"netvigator.com",
+		"cloud.com",
+		"live.hk",
+		"msn.com",
+		"gmail.com",
+		"hotmail.com",
+		"ymail.com",
+		"yahoo.com",
+		"yahoo.com.tw",
+		"yahoo.com.hk"
+	];
+	let topLevelDomains = ["com", "net", "org"];
+
+	var Mailcheck = require('mailcheck');
+	//console.log(Mailcheck);
+	$("#center_email").on('blur', function() {
+		if ($('.email-suggestion').length === 0) {		
+			Mailcheck.run({
+				email: $("#center_email").val(),
+				domains: domains, // optional
+				topLevelDomains: topLevelDomains, // optional
+				suggested: (suggestion) => {
+					$(`<div class="email-suggestion" style="font-size:small; color:blue;">您想輸入的是 <strong id="emailSuggestion">${suggestion.full}</strong> 嗎？</div>`).insertAfter("#center_email");
+					
+					$(".email-suggestion").click(function() {
+						$("#center_email").val($('#emailSuggestion').html());
+						$('.email-suggestion').remove();
+					});
+				},
+				empty: () => {
+					this.emailSuggestion = null
+				}
+			});
 		}
 	});
 }
@@ -259,7 +324,7 @@ const resolveEnPagePetitionStatus = () => {
 $(function(){
 	const EN_PAGE_STATUS = resolveEnPagePetitionStatus()
 
-	console.log("EN_PAGE_STATUS", EN_PAGE_STATUS)
+	//console.log("EN_PAGE_STATUS", EN_PAGE_STATUS)
 
 	if (EN_PAGE_STATUS==="FRESH") {
 		pageInit();
@@ -270,7 +335,7 @@ $(function(){
 
 		changeToPage(2)
 	}
-
+	initProgressBar();
 	// pageInit();
 	// changeToPage(1)
 })

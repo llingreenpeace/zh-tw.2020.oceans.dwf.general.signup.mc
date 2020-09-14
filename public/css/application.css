@@ -1070,8 +1070,8 @@ body.mobile #principal_form.form {
 /* line 228, /Users/lattecreative/RubymineProjects/GreenPeace-SavetheArctic/source/css/partials/_320grid.sass */
 #principal_form.form .progress_bar .container_bar .content {
     height: 14px;
-    width: 0;
-    background: #85b431;
+    width: 100%;
+    margin-top: -4px;
 }
 
 #principal_form.form p.error {
