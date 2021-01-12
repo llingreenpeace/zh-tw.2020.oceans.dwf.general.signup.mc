@@ -36,9 +36,9 @@ window.share = () => {
 }
 
 function initProgressBar() {
-    let barTarget = document.querySelector('input[name="barTarget"]') ? parseInt(document.querySelector('input[name="barTarget"]').value, 10) : 50000;
-    let barNumber = document.querySelector('input[name="barNumber"]') ? parseInt(document.querySelector('input[name="barNumber"]').value, 10) : 18280;
-
+    let barTarget = document.querySelector('input[name="numSignupTarget"]').value ? parseInt(document.querySelector('input[name="numSignupTarget"]').value, 10) : 0;
+    let barNumber = document.querySelector('input[name="numResponses"]').value ? parseInt(document.querySelector('input[name="numResponses"]').value, 10) : 0;
+	//console.log(barNumber);
     if (barNumber < 18280)
 		barNumber += 18280;
 	if (isNaN(barTarget) || barTarget < 50000)
@@ -104,7 +104,7 @@ var pageInit = function(){
 
 	// create the year options
 	let currYear = new Date().getFullYear()
-	for (var i = 0; i < 80; i++) {
+	for (var i = 0; i < 100; i++) {
 
 		let option = `<option value="${currYear-i}-01-01">${currYear-i}</option>`
 		$("#center_yearofbirth").append(option);
