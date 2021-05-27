@@ -5310,3 +5310,22 @@ only screen and (min-resolution: 2dppx) {
 .checkbox__privacy_extra a:hover {
     opacity: 0.7;
 }
+
+.line-div {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 25px 0;
+}
+
+.line-div a {
+    color: #2462d0;
+}
+
+.line-div img {
+    width: 100%;
+}
+
+.is-show-at-dd-page-only {
+    display: none;
+}

@@ -135,10 +135,11 @@ var pageInit = function(){
 		"taiwan-phone",
 		(value, element) => {
 			const phoneReg6 = new RegExp(/^(0|886|\+886)?(9\d{8})$/).test(value);
-			const phoneReg7 = new RegExp(/^(0|886|\+886){1}[2-8]-?\d{6,8}$/).test(value);
+			const phoneReg7 = new RegExp(/^(0|886|\+886){1}[3-8]-?\d{6,8}$/).test(value);
+			const phoneReg8 = new RegExp(/^(0|886|\+886){1}[2]-?\d{8}$/).test(value);
 	
 			if (value) {
-				return (phoneReg6 || phoneReg7)
+				return (phoneReg6 || phoneReg7 || phoneReg8)
 			}
 			return true
 		},

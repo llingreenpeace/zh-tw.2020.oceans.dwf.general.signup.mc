@@ -44,9 +44,23 @@ $(document).ready(function () {
     const urlParams = new URLSearchParams(queryString);
     if (urlParams.get('utm_source') === "dd") {
 		$('.is-hidden-at-dd-page-only').hide();
-		
+		$('.is-show-at-dd-page-only').show();
 		//移除電話欄位 required Attr
 		$('#center_phone').removeAttr("required");
+
+		if (urlParams.get('utm_content') === "tp") {
+			$('.line-tp').show();
+			$('.line-tc').hide();
+			$('.line-ks').hide();
+        } else if (urlParams.get('utm_content') === "tc") {
+			$('.line-tp').hide();
+			$('.line-tc').show();
+			$('.line-ks').hide();
+        } else {
+			$('.line-tp').hide();
+			$('.line-tc').hide();
+			$('.line-ks').show();
+        }
     }
 });
 
