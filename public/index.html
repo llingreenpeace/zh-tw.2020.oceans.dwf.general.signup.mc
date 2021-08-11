@@ -147,16 +147,16 @@
 					<fieldset>
 						<p class='normal'>
 							<label for="center_email" class="name">電子信箱</label>
-							<input name="email" id="center_email" class="email" placeholder="電子信箱" type="email" value=""
+							<input name="email" id="center_email" class="email" placeholder="電子信箱" type="email" value="" autocomplete="email"
 								required />
 							<!-- <label id="fake_supporter_lastName-error" class="error" for="fake_supporter_lastName"></label> -->
 						</p>
 						<p class='normal elem'>
 							<label for="center_name" class="name">名字</label>
 							<input name="last_name" id="center_lastname" class="last_name validate-name" placeholder="姓氏" value=""
-								type="text" minlength="1" required />
+								type="text" minlength="1" autocomplete="family-name" required />
 							<input name="first_name" id="center_name" class="first_name validate-name" placeholder="名字" value=""
-								type="text" minlength="1" required />
+								type="text" minlength="1" autocomplete="given-name" required />
 							<label class="title"></label>
 						</p>
 
@@ -171,7 +171,7 @@
 						<p class='normal phone elem'>
 							<label for="center_phone" class="name">手機號碼</label>
 							<!-- <input name="countrycode" id="center_countrycode" class="" placeholder="00" title="" type="text" /> -->
-							<input name="fake.supporter.phone" id="center_phone" class="taiwan-phone" placeholder="手機號碼" title="" value="" required/>
+							<input name="fake.supporter.phone" id="center_phone" class="taiwan-phone" placeholder="手機號碼" autocomplete="tel" value="" required/>
 							<label class="title"></label>
 						</p>
 						<p class='button submit elem'>
